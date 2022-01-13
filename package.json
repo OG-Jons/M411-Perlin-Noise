@@ -1,5 +1,6 @@
 {
   "name": "m411-perlin-noise-game",
+  "homepage": "https://og-jons.github.io/M411-Perlin-Noise-Game/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
