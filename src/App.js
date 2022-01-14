@@ -8,6 +8,14 @@ function App() {
 
     const [seed, setSeed] = useState(seedValue);
 
+    const [redBgIntensity, setRedBgIntensity] = useState(1);
+    const [greenBgIntensity, setGreenBgIntensity] = useState(1);
+    const [blueBgIntensity, setBlueBgIntensity] = useState(1);
+
+    const [redIntensity, setRedIntensity] = useState(1);
+    const [greenIntensity, setGreenIntensity] = useState(1);
+    const [blueIntensity, setBlueIntensity] = useState(1);
+
     useEffect(() => {
         let canvas = document.getElementsByTagName('canvas')[0];
         canvas.width = window.innerWidth;
@@ -24,9 +32,21 @@ function App() {
                 let value = Math.abs(noise.noise.perlin2(x / 100, y / 100));
                 value *= 256;
                 let cell = (x + y * canvas.width) * 4;
-                data[cell] = data[cell + 1] = data[cell + 2] = value;
-                data[cell] += Math.max(0, (25 - value) * 8);
-                data[cell + 3] = 255; // alpha
+                // data[cell] = data[cell + 1] = data[cell + 2] = value;
+
+                // Red
+                data[cell] = value * redBgIntensity;
+                data[cell] += Math.max(0, (25 - value) * redIntensity);
+
+                // Green
+                data[cell + 1] = value * greenBgIntensity;
+                data[cell + 1] += Math.max(0, (25 - value) * blueIntensity);
+
+                // Blue
+                data[cell + 2] = value * blueBgIntensity;
+                data[cell + 2] += Math.max(0, (25 - value) * blueIntensity);
+
+                data[cell + 3] = 210; // alpha
 
             }
         }
@@ -36,7 +56,7 @@ function App() {
         ctx.fillRect(0, 0, 100, 100);
         ctx.putImageData(image, 0, 0);
 
-        ctx.font = '16px sans-serif'
+        ctx.font = '16px'
         ctx.textAlign = 'center';
         ctx.fillStyle = 'white';
         ctx.fillText('Rendered in ' + (end - start) + ' ms', canvas.width / 2, canvas.height - 100);
@@ -44,12 +64,40 @@ function App() {
         if (console) {
             console.log('Rendered in ' + (end - start) + ' ms');
         }
-    }, [seed]);
+    }, [seed, redIntensity, greenIntensity, blueIntensity, redBgIntensity, greenBgIntensity, blueBgIntensity]);
 
 
     return (
         <div className="centerbox">
-            <span style={{marginLeft: '2rem'}}>Current Seed: <input type="number" onChange={(e) => setSeed(e.target.value)} value={seed}/></span>
+            <span style={{marginLeft: '2rem'}}>Current Seed: <input type="number"
+                                                                    onChange={(e) => setSeed(e.target.value)}
+                                                                    value={seed}/></span> <br/>
+            <span style={{marginLeft: '2rem'}}>Current Red Intensity: <input type="number"
+                                                                             style={{width: "50px"}}
+                                                                             onChange={(e) => setRedIntensity(e.target.value)}
+                                                                             value={redIntensity}/></span>
+            <span style={{marginLeft: '2rem'}}>Current Green Intensity: <input type="number"
+                                                                               style={{width: "50px"}}
+                                                                               onChange={(e) => setGreenIntensity(e.target.value)}
+                                                                               value={greenIntensity}/></span>
+            <span style={{marginLeft: '2rem'}}>Current Blue Intensity: <input type="number"
+                                                                              style={{width: "50px"}}
+                                                                              onChange={(e) => setBlueIntensity(e.target.value)}
+                                                                              value={blueIntensity}/></span> <br/>
+            <span style={{marginLeft: '2rem'}}>Current Red Background Intensity: <input type="number"
+                                                                                        style={{width: "50px"}}
+                                                                                        onChange={(e) => setRedBgIntensity(e.target.value)}
+                                                                                        value={redBgIntensity}/></span>
+            <span style={{marginLeft: '2rem'}}>Current Green Background Intensity: <input type="number"
+                                                                                          style={{width: "50px"}}
+                                                                                          onChange={(e) => setGreenBgIntensity(e.target.value)}
+                                                                                          value={greenBgIntensity}/></span>
+            <span style={{marginLeft: '2rem'}}>Current Blue Background Intensity: <input type="number"
+                                                                                         style={{width: "50px"}}
+                                                                                         onChange={(e) => setBlueBgIntensity(e.target.value)}
+                                                                                         value={blueBgIntensity}/></span>
+
+
             <canvas/>
         </div>
     );
