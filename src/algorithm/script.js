@@ -58,13 +58,6 @@
 
     module.seed(0);
 
-    // Skewing and unskewing factors for 2, 3, and 4 dimensions
-    let F2 = 0.5*(Math.sqrt(3)-1);
-    let G2 = (3-Math.sqrt(3))/6;
-
-    let F3 = 1/3;
-    let G3 = 1/6;
-
     // ##### Perlin noise stuff
 
     function fade(t) {
