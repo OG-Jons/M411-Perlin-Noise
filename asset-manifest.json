@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/M411-Perlin-Noise-Game/static/css/main.073c9b0a.css",
-    "main.js": "/M411-Perlin-Noise-Game/static/js/main.58c1870f.js",
+    "main.css": "/M411-Perlin-Noise-Game/static/css/main.ecd713e1.css",
+    "main.js": "/M411-Perlin-Noise-Game/static/js/main.aa22888c.js",
     "static/js/787.0cd46ab3.chunk.js": "/M411-Perlin-Noise-Game/static/js/787.0cd46ab3.chunk.js",
-    "static/media/logo.svg": "/M411-Perlin-Noise-Game/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/M411-Perlin-Noise-Game/index.html",
-    "main.073c9b0a.css.map": "/M411-Perlin-Noise-Game/static/css/main.073c9b0a.css.map",
-    "main.58c1870f.js.map": "/M411-Perlin-Noise-Game/static/js/main.58c1870f.js.map",
+    "main.ecd713e1.css.map": "/M411-Perlin-Noise-Game/static/css/main.ecd713e1.css.map",
+    "main.aa22888c.js.map": "/M411-Perlin-Noise-Game/static/js/main.aa22888c.js.map",
     "787.0cd46ab3.chunk.js.map": "/M411-Perlin-Noise-Game/static/js/787.0cd46ab3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.58c1870f.js"
+    "static/css/main.ecd713e1.css",
+    "static/js/main.aa22888c.js"
   ]
 }
