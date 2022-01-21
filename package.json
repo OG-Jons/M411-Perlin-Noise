@@ -1,7 +1,7 @@
 {
-  "name": "m411-perlin-noise-game",
-  "homepage": "https://og-jons.github.io/M411-Perlin-Noise-Game/",
-  "version": "0.1.0",
+  "name": "m411-perlin-noise",
+  "homepage": "https://og-jons.github.io/M411-Perlin-Noise/",
+  "version": "1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
