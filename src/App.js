@@ -16,7 +16,7 @@ function App() {
     const [greenIntensity, setGreenIntensity] = useState(1);
     const [blueIntensity, setBlueIntensity] = useState(1);
 
-    useEffect(() => {
+    function generateNoise() {
         let canvas = document.getElementsByTagName('canvas')[0];
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -64,6 +64,10 @@ function App() {
         if (console) {
             console.log('Rendered in ' + (end - start) + ' ms');
         }
+    }
+
+    useEffect(() => {
+        generateNoise();
     }, [seed, redIntensity, greenIntensity, blueIntensity, redBgIntensity, greenBgIntensity, blueBgIntensity]);
 
 
