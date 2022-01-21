@@ -1,6 +1,6 @@
 import './App.css';
 import noise from './algorithm/script';
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 
 function App() {
 
@@ -15,9 +15,11 @@ function App() {
     const [redIntensity, setRedIntensity] = useState(1);
     const [greenIntensity, setGreenIntensity] = useState(1);
     const [blueIntensity, setBlueIntensity] = useState(1);
+    const canvasRef = useRef(null);
 
-    function generateNoise() {
-        let canvas = document.getElementsByTagName('canvas')[0];
+    const generateNoise = useCallback(() => {
+
+        const canvas = canvasRef.current;
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         let ctx = canvas.getContext('2d');
@@ -32,27 +34,32 @@ function App() {
                 let value = Math.abs(noise.noise.perlin2(x / 100, y / 100));
                 value *= 256;
                 let cell = (x + y * canvas.width) * 4;
-                // data[cell] = data[cell + 1] = data[cell + 2] = value;
 
-                // Red
+                // Background - Red
                 data[cell] = value * redBgIntensity;
+
+                // Lines - Red
                 data[cell] += Math.max(0, (25 - value) * redIntensity);
 
-                // Green
+                // Background - Green
                 data[cell + 1] = value * greenBgIntensity;
-                data[cell + 1] += Math.max(0, (25 - value) * blueIntensity);
 
-                // Blue
+                // Lines - Green
+                data[cell + 1] += Math.max(0, (25 - value) * greenIntensity);
+
+                // Background - Blue
                 data[cell + 2] = value * blueBgIntensity;
+
+                // Lines - Blue
                 data[cell + 2] += Math.max(0, (25 - value) * blueIntensity);
 
-                data[cell + 3] = 210; // alpha
+                // Opacity
+                data[cell + 3] = 210;
 
             }
         }
         let end = Date.now();
 
-        ctx.fillColor = 'black';
         ctx.fillRect(0, 0, 100, 100);
         ctx.putImageData(image, 0, 0);
 
@@ -61,14 +68,13 @@ function App() {
         ctx.fillStyle = 'white';
         ctx.fillText('Rendered in ' + (end - start) + ' ms', canvas.width / 2, canvas.height - 100);
 
-        if (console) {
-            console.log('Rendered in ' + (end - start) + ' ms');
-        }
-    }
+        console.log('Rendered in ' + (end - start) + ' ms');
+
+    }, [seed, redIntensity, greenIntensity, blueIntensity, redBgIntensity, greenBgIntensity, blueBgIntensity]);
 
     useEffect(() => {
         generateNoise();
-    }, [seed, redIntensity, greenIntensity, blueIntensity, redBgIntensity, greenBgIntensity, blueBgIntensity]);
+    }, [generateNoise]);
 
 
     return (
@@ -102,7 +108,7 @@ function App() {
                                                                                          value={blueBgIntensity}/></span>
 
 
-            <canvas/>
+            <canvas ref={canvasRef}/>
         </div>
     );
 }
