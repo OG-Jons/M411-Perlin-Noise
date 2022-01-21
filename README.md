@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Data measurements
+We made tests and measured on different resolutions, how long it would take to generate an image. <br>
+We tested every resolution 3 times and averaged the results.
+This graph shows the summary of this test.
+![Image of graph](https://github.com/OG-Jons/M411-Perlin-Noise-Game/public/data.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
