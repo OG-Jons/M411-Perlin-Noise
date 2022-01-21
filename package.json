@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/OG-Jons/M411-Perlin-Noise.git"
   },
-  "version": "1",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
