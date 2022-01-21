@@ -1,6 +1,10 @@
 {
   "name": "m411-perlin-noise",
   "homepage": "https://og-jons.github.io/M411-Perlin-Noise/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OG-Jons/M411-Perlin-Noise.git"
+  },
   "version": "1",
   "private": true,
   "dependencies": {
