@@ -1,5 +1,7 @@
 # Perlin Noise Image Generator
 
+![Image of the generation](https://github.com/OG-Jons/M411-Perlin-Noise-Game/blob/master/public/perlinImage.png?raw=true)
+
 ## Data measurements
 We made tests and measured on different resolutions, how long it would take to generate an image. <br>
 We tested every resolution 3 times and averaged the results.
